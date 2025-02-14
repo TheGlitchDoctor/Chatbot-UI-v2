@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes thinking {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.thinking-dot {
+  @apply w-2 h-2 rounded-full bg-[#ffb71b];
+  animation: thinking 1s infinite;
+}
+
+.thinking-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.thinking-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 8s infinite linear;
+}
+
+.sparkle {
+  @apply absolute w-2 h-2 bg-yellow-300 rounded-full;
+  animation: sparkle 1.5s infinite;
+}
+
+.float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.message-cloud {
+  @apply relative p-4 rounded-2xl shadow-lg transition-all duration-300;
+}
+
+.message-cloud::before {
+  content: '';
+  @apply absolute w-4 h-4 transform rotate-45;
+}
+
+.user-message {
+  @apply bg-blue-500 text-white;
+}
+
+.user-message::before {
+  @apply bg-blue-300 -right-2 top-4;
+}
+
+.bot-message {
+  @apply bg-[#ffb71b] text-black;
+}
+
+.bot-message::before {
+  @apply bg-[#ffb71b] -left-2 top-4;
+}
+
+.code-block {
+  @apply relative mt-4 bg-gray-900 rounded-lg overflow-hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.code-block pre {
+  @apply p-4 text-sm font-mono text-gray-200;
+}
+
+.code-block-header {
+  @apply flex items-center justify-between px-4 py-2 bg-gray-800 border-b border-gray-700;
+}
+
+.thinking-indicator {
+  @apply flex items-center gap-1 p-2 rounded-full;
+  background-color: rgba(255, 183, 27, 0.2);
+}
+
+.copy-button {
+  @apply absolute top-2 right-2 p-2 rounded-lg bg-gray-800 hover:bg-gray-700 
+         transition-all duration-200 text-gray-400 hover:text-white;
+}
